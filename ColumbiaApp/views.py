@@ -18,7 +18,7 @@ def loggedIn(request):
         if form.is_valid():
             new_user = form.save()
             new_user.save()
-            data['message'] = "Successfully processed. Press register again to add another user."
+            data['message'] = "Successfully processed. Press register again to add another user. "
             return render(request,"admin_ops.html", context=data)
         else:
             form = UserCreationForm()
