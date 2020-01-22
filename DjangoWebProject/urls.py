@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ColumbiaApp import views
+from django.contrib.auth.views import LoginView,LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name="home"),
+    path('',views.home,name='home'),
+    path('login',LoginView.as_view(),name='login'),
+    path('loggedIn',views.loggedIn,name='loggedIn'),
+    path('register',views.register,name='register'),
+    path('logout',LogoutView.as_view(),name='logout'),
 ]

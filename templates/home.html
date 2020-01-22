@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     Welcome to My Wonderful App!
     <br>
     Today is: {{date}}
-</body>
-</html>
+    <br>
+    <p>
+        <a href="{% url 'login' %}">login</a><br>
+        <a href="{% url 'register' %}">register</a>
+    </p>
+{% endblock %}
