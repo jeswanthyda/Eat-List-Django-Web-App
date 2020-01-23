@@ -65,9 +65,8 @@ function initAutocomplete() {
                       "<h5 class='card-title'>" + place.name + "</h5>" +
                       "<h6 class='card-subtitle mb-2 text-muted'>Rating: " + place.rating + "</h6>" +
                       "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>" +
-                      "<a href='{% url 'add_to_fav' %}?name=" + place.name + '&cuisine=' + cuisine + "' class='card-link'>Add to Favorites</a>" +
-                      "<a href='#' class='card-link'>Website</a>" +
-                    "</div>" + "</div>"
+                      "<a href=\"/add_to_fav?name=" + place.name.split(' ').join('+') + "&cuisine="+ cuisine.split(' ').join('+') + "\" class='card-link'>Add to Favorites</a>" +
+                      "<a href='#' class='card-link'>Website</a>" + "</div>" + "</div>"
                     
                     var marker = markers.slice(-1)[0] 
                     //Info Window for the markers
@@ -116,7 +115,6 @@ function sortByKey(array, key) {
 }
 
 function perc2color(perc) {
-    console.log(perc)
 	var r, g, b = 0;
 	if(perc < 50) {
 		r = 255;

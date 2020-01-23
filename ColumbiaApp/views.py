@@ -40,26 +40,41 @@ def restaurant_map(request):
     return render(request,"restaurant_map.html",context=data)
 
 def fav_list(request):
-    fav_rest_list = Restaurant.objects.filter(user=request.user)
-    data_list = []
-    context = {}
-    for ele in fav_rest_list:
-        temp_dict = {}
-        temp_dict['name'] = ele.name
-        temp_dict['cuisine'] = ele.cuisine
-        temp_dict['url'] = ele.url
-        data_list.append(temp_dict)
-    context['fav_restaurants'] = data_list
-    return render(request,'fav_list.html',context)
+    if request.user.is_authenticated:
+        fav_rest_list = Restaurant.objects.filter(user=request.user)
+        data_list = []
+        context = {}
+        for ele in fav_rest_list:
+            temp_dict = {}
+            temp_dict['name'] = ele.name
+            temp_dict['cuisine'] = ele.cuisine
+            temp_dict['url'] = ele.url
+            data_list.append(temp_dict)
+        context['fav_restaurants'] = data_list
+        return render(request,'fav_list.html',context)
+    else:
+        pass
+        #TODO
+        #Send to login page
 
 def add_to_fav(request):
-    new_fav = Restaurant(user=request.user)
-    new_fav.cuisine = request.GET['cuisine']
-    new_fav.name = request.GET['name']
-    new_fav.save()
-    context = {'message':'Successfully Added!'}
-    return render(request,'restaurant_map.html',context)
+    if request.user.is_authenticated:
+        new_fav = Restaurant(user=request.user)
+        new_fav.cuisine = request.GET['cuisine']
+        new_fav.name = request.GET['name']
+        new_fav.save()
+        context = {'message':'Successfully Added!'}
+        return render(request,'restaurant_map.html',context)
+    else:
+        #TODO
+        #Send to login page
+        pass
 
 def remove_from_fav(request):
-    Restaurant.objects.filter(user=request.user,name=request.GET['res_to_remove']).delete()
-    return fav_list(request)
+    if request.user.is_authenticated:
+        Restaurant.objects.filter(user=request.user,name=request.GET['res_to_remove']).delete()
+        return fav_list(request)
+    else:
+        pass
+        #TODO
+        # Send to login page
