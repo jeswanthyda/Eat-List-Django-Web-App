@@ -4,14 +4,14 @@
     <table>
             <tr>
                 <td>Restaurent Name</td>
-                <td>Cusine Type</td>
+                <td>Cuisine Type</td>
                 <td>Remove TODO</td>
             </tr>
         {% for ele in fav_restaurants %}
             <tr>
                 <td>{{ele.name}}</td>
-                <td>{{ele.cusine}}</td>
-                <td><form action="{% url 'remove_from_fav' %}" method="get"><input type="submit" value="Remove"></form></td>
+                <td>{{ele.cuisine}}</td>
+                <td><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
             </tr>
         {% endfor %}
         </table>

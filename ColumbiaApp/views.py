@@ -46,21 +46,20 @@ def fav_list(request):
     for ele in fav_rest_list:
         temp_dict = {}
         temp_dict['name'] = ele.name
-        temp_dict['cusine'] = ele.cusine
+        temp_dict['cuisine'] = ele.cuisine
         temp_dict['url'] = ele.url
         data_list.append(temp_dict)
     context['fav_restaurants'] = data_list
     return render(request,'fav_list.html',context)
 
 def add_to_fav(request):
-    #TODO
-    #Upon adding restaurant from map.
-    # Update database here
-    pass
+    new_fav = Restaurant(user=request.user)
+    new_fav.cuisine = request.GET['cuisine']
+    new_fav.name = request.GET['name']
+    new_fav.save()
+    context = {'message':'Successfully Added!'}
+    return render(request,'restaurant_map.html',context)
 
 def remove_from_fav(request):
-    #Restaurant.objects.filter(user=request.user,name=).delete()
-    #return fav_list(request)
-    print(request.name)
-    print('here')
-    pass
+    Restaurant.objects.filter(user=request.user,name=request.GET['res_to_remove']).delete()
+    return fav_list(request)
