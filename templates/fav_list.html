@@ -1,8 +1,18 @@
 {% extends 'base_login.html' %}
 {% block content %}
-    Hi {{ user }}. You've successfully logged in.
-    <a href="{% url 'home' %}">Name of App Here</a>
-    <a href="{% url 'restaurant_map' %}">Restaurant Map</a>
-    <a href="{% url 'fav_list' %}">Favorite List</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    Hi {{ user }}. These are your fav restaurants.
+    <table>
+            <tr>
+                <td>Restaurent Name</td>
+                <td>Cuisine Type</td>
+                <td>Remove TODO</td>
+            </tr>
+        {% for ele in fav_restaurants %}
+            <tr>
+                <td>{{ele.name}}</td>
+                <td>{{ele.cuisine}}</td>
+                <td><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
+            </tr>
+        {% endfor %}
+        </table>
 {% endblock %}

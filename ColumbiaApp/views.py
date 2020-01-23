@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
+from ColumbiaApp.models import Restaurant
 
 # Create your views here.
 
@@ -39,16 +40,26 @@ def restaurant_map(request):
     pass
 
 def fav_list(request):
-    #TODO
-    # For a given user, get all restaurant entries and send
-    # them to fave_list.html
-    pass
+    fav_rest_list = Restaurant.objects.filter(user=request.user)
+    data_list = []
+    context = {}
+    for ele in fav_rest_list:
+        temp_dict = {}
+        temp_dict['name'] = ele.name
+        temp_dict['cuisine'] = ele.cuisine
+        temp_dict['url'] = ele.url
+        data_list.append(temp_dict)
+    context['fav_restaurants'] = data_list
+    return render(request,'fav_list.html',context)
 
 def add_to_fav(request):
-    #TODO
-    #Upon adding restaurant from map.
-    # Update database here
-    pass
+    new_fav = Restaurant(user=request.user)
+    new_fav.cuisine = request.GET['cuisine']
+    new_fav.name = request.GET['name']
+    new_fav.save()
+    context = {'message':'Successfully Added!'}
+    return render(request,'restaurant_map.html',context)
 
 def remove_from_fav(request):
-    pass
+    Restaurant.objects.filter(user=request.user,name=request.GET['res_to_remove']).delete()
+    return fav_list(request)
