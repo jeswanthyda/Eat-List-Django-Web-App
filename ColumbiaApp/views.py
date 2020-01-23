@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
+from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from ColumbiaApp.models import Restaurant
+from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -10,13 +13,12 @@ def home(request):
     import datetime
     data['date'] = datetime.date.today()
    
-    template_name = 'home.html'
-    extended_template = 'base_nologin.html'
+    base_template = 'base_nologin.html'
 
     if request.user.is_authenticated:
-        extended_template = 'base_login.html'
+        base_template = 'base_login.html'
     
-    data['extended_template'] = extended_template
+    data['base_template'] = base_template
     user = request.user
     if user.is_superuser:
         form = UserCreationForm(request.POST)
@@ -29,7 +31,7 @@ def home(request):
             form = UserCreationForm()
             data['form'] = form
             return render(request,"admin_ops.html",context=data)
-    return render(request, template_name, context=data)
+    return render(request, 'home.html', context=data)
 
 def register(request):
     #TODO
@@ -37,13 +39,20 @@ def register(request):
 
 def restaurant_map(request):
     data = dict()
+
+    base_template = 'base_nologin.html'
+
+    if request.user.is_authenticated:
+        base_template = 'base_login.html'
+    
+    data['base_template'] = base_template
     return render(request,"restaurant_map.html",context=data)
 
 def fav_list(request):
+    context=dict()
     if request.user.is_authenticated:
         fav_rest_list = Restaurant.objects.filter(user=request.user)
         data_list = []
-        context = {}
         for ele in fav_rest_list:
             temp_dict = {}
             temp_dict['name'] = ele.name
@@ -53,9 +62,7 @@ def fav_list(request):
         context['fav_restaurants'] = data_list
         return render(request,'fav_list.html',context)
     else:
-        pass
-        #TODO
-        #Send to login page
+        return HttpResponseRedirect(reverse('login'))
 
 def add_to_fav(request):
     if request.user.is_authenticated:
@@ -64,17 +71,15 @@ def add_to_fav(request):
         new_fav.name = request.GET['name']
         new_fav.save()
         context = {'message':'Successfully Added!'}
-        return render(request,'restaurant_map.html',context)
+        return JsonResponse(context)
     else:
-        #TODO
-        #Send to login page
-        pass
+        context = {'message':'Must be logged in'}
+        return JsonResponse(context)
+
 
 def remove_from_fav(request):
     if request.user.is_authenticated:
         Restaurant.objects.filter(user=request.user,name=request.GET['res_to_remove']).delete()
         return fav_list(request)
     else:
-        pass
-        #TODO
-        # Send to login page
+        return HttpResponseRedirect(reverse('login'))
