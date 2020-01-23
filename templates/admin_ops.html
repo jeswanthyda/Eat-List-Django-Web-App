@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_login.html' %}
 {% block content %}
     Hello {{ user}}. This is the admin operations page!
     <p>
@@ -7,7 +7,7 @@
     {% endif %}
     </p>
     <p>
-        <form method="post" action="{% url 'loggedIn' %}">
+        <form method="post" action="{% url 'home' %}">
             {% csrf_token %}
             <table>
                 <tr>

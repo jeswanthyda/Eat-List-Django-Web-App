@@ -8,10 +8,14 @@ def home(request):
     data = dict()
     import datetime
     data['date'] = datetime.date.today()
-    return render(request, "home.html", context=data)
+   
+    template_name = 'home.html'
+    extended_template = 'base_nologin.html'
 
-def loggedIn(request):
-    data = dict()
+    if request.user.is_authenticated:
+        extended_template = 'base_login.html'
+    
+    data['extended_template'] = extended_template
     user = request.user
     if user.is_superuser:
         form = UserCreationForm(request.POST)
@@ -24,8 +28,27 @@ def loggedIn(request):
             form = UserCreationForm()
             data['form'] = form
             return render(request,"admin_ops.html",context=data)
-    return render(request,"loggedIn.html", context=data)
+    return render(request, template_name, context=data)
 
 def register(request):
     #TODO
+    pass
+
+def restaurant_map(request):
+    #TODO
+    pass
+
+def fav_list(request):
+    #TODO
+    # For a given user, get all restaurant entries and send
+    # them to fave_list.html
+    pass
+
+def add_to_fav(request):
+    #TODO
+    #Upon adding restaurant from map.
+    # Update database here
+    pass
+
+def remove_from_fav(request):
     pass

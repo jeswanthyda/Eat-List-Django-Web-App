@@ -1,11 +1,13 @@
-{% extends 'base.html' %}
+{% extends extended_template %}
+
 {% block content %}
-    Welcome to My Wonderful App!
-    <br>
-    Today is: {{date}}
-    <br>
-    <p>
-        <a href="{% url 'login' %}">login</a><br>
-        <a href="{% url 'register' %}">register</a>
-    </p>
+    Hi {{ user }}. You've successfully logged in. <br>
+    <a href="{% url 'home' %}">Name of App Here</a> <br>
+    <a href="{% url 'restaurant_map' %}">Restaurant Map</a> <br>
+    <a href="{% url 'fav_list' %}">Favorite List</a> <br>
+    <a href="{% url 'logout' %}">Logout</a> <br>
+
+    TODO: Put these in modals <br>
+    <a href="{% url 'login' %}">login</a><br>
+    <a href="{% url 'register' %}">register</a> <br>
 {% endblock %}

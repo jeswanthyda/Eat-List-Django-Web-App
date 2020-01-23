@@ -22,7 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
     path('login',LoginView.as_view(),name='login'),
-    path('loggedIn',views.loggedIn,name='loggedIn'),
     path('register',views.register,name='register'),
     path('logout',LogoutView.as_view(),name='logout'),
+    path('restaurant_map',views.restaurant_map,name='restaurant_map'),
+    path('fav_list',views.fav_list,name='fav_list'),
+    path('add_to_fav',views.add_to_fav,name='add_to_fav'),
+    path('remove_from_fav',views.remove_from_fav,name='remove_from_fav'),
 ]
