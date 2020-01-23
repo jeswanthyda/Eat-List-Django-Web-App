@@ -1,6 +1,21 @@
-html, body {
+html {
     height: 100%;
 }
+
+
+body {
+  padding-top: 56px;
+  height: 100%;
+}
+
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 
 /* Map Stuff */
 #map {
