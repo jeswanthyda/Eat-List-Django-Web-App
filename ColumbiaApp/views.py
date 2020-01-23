@@ -35,8 +35,8 @@ def register(request):
     pass
 
 def restaurant_map(request):
-    #TODO
-    pass
+    data = dict()
+    return render(request,"restaurant_map.html",context=data)
 
 def fav_list(request):
     #TODO
