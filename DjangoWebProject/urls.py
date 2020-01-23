@@ -27,5 +27,5 @@ urlpatterns = [
     path('restaurant_map',views.restaurant_map,name='restaurant_map'),
     path('fav_list',views.fav_list,name='fav_list'),
     path('add_to_fav',views.add_to_fav,name='add_to_fav'),
-    path('remove_from_fav',views.remove_from_fav,name='remove_from_fav'),
+    path('fav_list',views.remove_from_fav,name='remove_from_fav'),
 ]
