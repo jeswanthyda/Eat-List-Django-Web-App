@@ -1,8 +1,13 @@
 {% extends 'base_nologin.html' %}
 {% block content %}
     Hi {{ user }}. You've successfully logged in.
-    <a href="{% url 'home' %}">Name of App Here</a>
-    <a href="{% url 'restaurant_map' %}">Restaurant Map</a>
-    <a href="{% url 'fav_list' %}">Favorite List</a>
-    <a href="{% url 'logout' %}">Logout</a>
+    <div class="parent">
+        <div class="absolute">
+            <input id="location-searchbox" type="text" placeholder="My Location" autocomplete="on">
+            <input id="cuisine-searchbox" type="text" placeholder="Cuisine Type">
+            <input id="submit-search" type="submit" placeholder="Find Restaurants">
+        </div>
+        <div id="map"></div>
+    </div>
+    
 {% endblock %}

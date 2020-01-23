@@ -1,2 +1,6 @@
 .vscode/*
+<<<<<<< HEAD
 .idea/*
+=======
+config.txt
+>>>>>>> sid
