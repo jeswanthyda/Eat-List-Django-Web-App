@@ -29,7 +29,8 @@ body {
   border-radius: 3px;
   border: 0;
   margin-top: 10px;
-  width: 270px;
+  /*width: 270px; */
+  width: 200px;
   height: 40px;
   text-overflow: ellipsis;
   padding: 0 1em;
@@ -37,12 +38,13 @@ body {
 
 .parent {
   position: relative;
+  
 }
 
 .absolute {
   position: absolute;
-  top: 10px;
-  right: 40px;
+  top: 15px;
+  right: 1%;
   z-index: 1;
 }
 
@@ -53,7 +55,8 @@ body {
   border: 0;
   margin-top: 10px;
   margin-left: 10px;
-  width: 270px;
+  width: 100px;
+  /*width: 270px;*/
   height: 40px;
   text-overflow: ellipsis;
   padding: 0 1em;

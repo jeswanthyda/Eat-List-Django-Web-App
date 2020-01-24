@@ -3,20 +3,24 @@
 {% block content %}
     <h1 style="text-align: center;">Search for places to eat : TODO</h1>
     <p style="text-align: center;padding-bottom:30px;" class="lead">Add catchy lines about app : TODO.</p>
-
-    <div class="card w-100 mb-3" style="background-color: lightblue;">
-        <div class="card-body">
-            <h5 class="card-title">Find Restaurants</h5>
-            <p class="card-text">Check out restaurants near you.</p>
-            <a href="{% url 'restaurant_map' %}" class="btn-lg btn-primary float-right bg-dark">Start Searching</a>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card" style="background:linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url('/static/ColumbiaApp/img/fav_bg.jpg');">
+                <div class="card-body">
+                    <h5 class="card-title">Find Restaurants</h5>
+                    <p class="card-text">Check out restaurants near you.</p>
+                    <a href="{% url 'restaurant_map' %}" class="btn-lg btn-primary float-right bg-dark">Start Searching</a>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <div class="card w-100 mb-3" style="background-color: lightgreen;">
-        <div class="card-body">
-            <h5 class="card-title">Favorites List</h5>
-            <p class="card-text">See your favorite restaurants and their cuisines.</p>
-            <a href="{% url 'fav_list' %}" class="btn-lg btn-primary float-right bg-dark">See Favorites !</a>
+        <div class="col-lg-6">
+            <div class="card" style="background-color: white;">
+                <div class="card-body">
+                    <h5 class="card-title">Favorites List</h5>
+                    <p class="card-text">See your favorite restaurants and their cuisines.</p>
+                    <a href="{% url 'fav_list' %}" class="btn-lg btn-primary float-right bg-dark">See Favorites !</a>
+                </div>
+            </div>
         </div>
     </div>
 
