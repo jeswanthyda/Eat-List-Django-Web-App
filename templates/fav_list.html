@@ -1,14 +1,14 @@
 {% extends 'base_login.html' %}
 {% block content %}
-    <h1 style="text-align: center;">Search for places to eat : TODO</h1>
-    <p style="text-align: center;" class="lead">Add catchy lines about app : TODO.</p>
-    Hi {{ user }}. These are your fav restaurants.
-    <table style="width:100%" class="table table-hover" align="center" border="3">
-        <thead class="thead-light">
+    <h1 style="text-align: center;">{{user|title}}'s Favorite Restaurants</h1>
+    <p style="text-align: center;padding-bottom:30px;" class="lead">Add your favorite restaurants from the <a href="{% url 'restaurant_map' %}">map</a> and check them out here.</p>
+
+    <table style="width:70%" class="table table-hover table-striped" align="center" border="2">
+        <thead class="thead-dark text-center">
             <tr>
-                <td align="centre">Restaurent Name</td>
-                <td>Cuisine Type</td>
-                <td>Remove TODO</td>
+                <th>Restaurant Name</th>
+                <th>Cuisine Type</th>
+                <th>Remove</th>
             </tr>
         </thead>
 
@@ -17,7 +17,7 @@
             <tr>
                 <td>{{ele.name}}</td>
                 <td>{{ele.cuisine}}</td>
-                <td><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
+                <td align="center"><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
             </tr>
         {% endfor %}
         </tbody>

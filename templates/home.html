@@ -2,14 +2,22 @@
 
 {% block content %}
     <h1 style="text-align: center;">Search for places to eat : TODO</h1>
-    <p style="text-align: center;" class="lead">Add catchy lines about app : TODO.</p>
-    Hi {{ user }}. You've successfully logged in. <br>
-    <a href="{% url 'home' %}">Name of App Here</a> <br>
-    <a href="{% url 'restaurant_map' %}">Restaurant Map</a> <br>
-    <a href="{% url 'fav_list' %}">Favorite List</a> <br>
-    <a href="{% url 'logout' %}">Logout</a> <br>
+    <p style="text-align: center;padding-bottom:30px;" class="lead">Add catchy lines about app : TODO.</p>
 
-    TODO: Put these in modals <br>
-    <a href="{% url 'login' %}">login</a><br>
-    <a href="{% url 'register' %}">register</a> <br>
+    <div class="card w-100 mb-3" style="background-color: lightblue;">
+        <div class="card-body">
+            <h5 class="card-title">Find Restaurants</h5>
+            <p class="card-text">Check out restaurants near you.</p>
+            <a href="{% url 'restaurant_map' %}" class="btn-lg btn-primary float-right bg-dark">Start Searching</a>
+        </div>
+    </div>
+    
+    <div class="card w-100 mb-3" style="background-color: lightgreen;">
+        <div class="card-body">
+            <h5 class="card-title">Favorites List</h5>
+            <p class="card-text">See your favorite restaurants and their cuisines.</p>
+            <a href="{% url 'fav_list' %}" class="btn-lg btn-primary float-right bg-dark">See Favorites !</a>
+        </div>
+    </div>
+
 {% endblock %}

@@ -130,7 +130,7 @@ def add_to_fav(request):
             return JsonResponse(context)
         except:
             new_fav = Restaurant(user=cur_user)
-            new_fav.cuisine = request.GET['cuisine']
+            new_fav.cuisine = request.GET['cuisine'].capitalize() 
             new_fav.name = cur_name
             new_fav.save()
             context = {'message':'The restaurant is added to your favorites!'}

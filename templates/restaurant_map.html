@@ -1,9 +1,9 @@
 {% extends base_template %}
 
 {% block content %}
-    <h1 style="text-align: center;">Search for places to eat : TODO</h1>
-    <p style="text-align: center;" class="lead">Add catchy lines about app : TODO.</p>
-    Hi {{ user }}. You've successfully logged in.
+    <h1 style="text-align: center;">Find the Best Restaurants</h1>
+    <p style="text-align: center;padding-bottom:30px;" class="lead">Find the closest and best restaurants for your favorite cuisine.<br> After
+        adding them, check out your <a href="{% url 'fav_list' %}">list</a>.</p>
     <div class="parent">
         <div class="absolute">
             <input id="location-searchbox" type="text" placeholder="My Location" autocomplete="on">

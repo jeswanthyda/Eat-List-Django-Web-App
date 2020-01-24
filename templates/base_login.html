@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin-ext"
           type="text/css">
     <link rel="stylesheet" href="{% static 'ColumbiaApp/css/style.css' %}" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </head>
 <body>
 
@@ -26,6 +25,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a class="nav-link" style="padding-right:50px;" href="#">Welcome {{ user|title }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>
             </ul>
@@ -33,18 +35,20 @@
     </div>
 </nav>
 
-<section class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
+<section class="py-5 bg-image-full" style="background-image: url('/static/ColumbiaApp/img/bg.jpg');filter: brightness(110%);">
     <div class="container">
         {% block content %}
         {% endblock %}
     </div>
 
-    <div style="height: 500px;"></div>
+    <div style="height: 100px;"></div>
 
 </section>
-  <footer class="py-5 bg-dark">
+  <footer class="py-3 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Columbia 2020</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Columbia 2020.<br> Created by
+            Sidharth Bambah, Jeswanth Yadagani, Ujwal Dinesh & Asit Sahoo.
+        </p>
     </div>
     <!-- /.container -->
   </footer>

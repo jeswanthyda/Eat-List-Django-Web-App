@@ -66,7 +66,7 @@ function initAutocomplete() {
                       "<h6 class='card-subtitle mb-2 text-muted'>Rating: " + place.rating + "</h6>" +
                       "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>" +
                       "<button onclick=\"add_to_fav(\'"+place.name.replace(/'/g, "\\'")+"',\'"+cuisine.replace(/'/g, "\\'")+"\')\" class='card-link'>Add to Favorites</button>" +
-                      "<a href='#' class='card-link'>Website</a>" + "</div>" + "</div>"
+                      "</div>" + "</div>"
                     
                     var marker = markers.slice(-1)[0] 
                     //Info Window for the markers

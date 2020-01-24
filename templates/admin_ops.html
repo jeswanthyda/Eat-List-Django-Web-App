@@ -1,11 +1,12 @@
 {% extends 'base_login.html' %}
 {% block content %}
-    <h1 style="text-align: center;">Search for places to eat : TODO</h1>
-    <p style="text-align: center;" class="lead">Add catchy lines about app : TODO.</p>
+    <h1 style="text-align: center;">Admin Panel</h1>
+    <p style="text-align: center;" class="lead">Easily add multiple new users to the application with
+        complete admin functionality.</p>
     <div class="register-form">
         <form action="{% url 'doAdminRegister' %}" method="post">
             {% csrf_token %}
-            <h2 class="text-center">Make an Account</h2>   
+            <h3 class="text-center" style="">Create New User</h3>   
             {% if status == 'failure' %}
             <p style="color:red;"> {{ message }}</p>
             {% elif status == 'success' %}
@@ -26,7 +27,5 @@
             </div>    
         </form>
     </div>
-        <a href="{% url 'logout' %}">Logout</a>
-    </p>
 {% endblock %}
     
