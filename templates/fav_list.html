@@ -1,12 +1,16 @@
 {% extends 'base_login.html' %}
 {% block content %}
     Hi {{ user }}. These are your fav restaurants.
-    <table>
+    <table style="width:100%" class="table table-hover" align="center" border="3">
+        <thead class="thead-light">
             <tr>
-                <td>Restaurent Name</td>
+                <td align="centre">Restaurent Name</td>
                 <td>Cuisine Type</td>
                 <td>Remove TODO</td>
             </tr>
+        </thead>
+
+        <tbody>
         {% for ele in fav_restaurants %}
             <tr>
                 <td>{{ele.name}}</td>
@@ -14,5 +18,7 @@
                 <td><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
             </tr>
         {% endfor %}
-        </table>
+        </tbody>
+
+    </table>
 {% endblock %}

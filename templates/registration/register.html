@@ -1,0 +1,10 @@
+{% extends 'base_nologin.html' %}
+{% block content %}
+<h3>Create an account</h3>
+<h2>Register</h2>
+    <form method="post" action="{% url "register" %}">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit">Register</button>
+    </form>
+{% endblock %}

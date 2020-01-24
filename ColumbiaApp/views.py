@@ -3,6 +3,7 @@ from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from ColumbiaApp.models import Restaurant
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 
@@ -34,8 +35,19 @@ def home(request):
     return render(request, 'home.html', context=data)
 
 def register(request):
-    #TODO
-    pass
+    return render(request, 'registration/register.html')
+
+def doRegister(request):
+    context = dict()
+    form = UserCreationForm(request.POST)
+    if form.is_valid():
+        temp_user = form.save()
+        User(temp_user)
+        return HttpResponseRedirect(reverse('login'))
+    else:
+        form = UserCreationForm()
+        context['form'] = form
+        return render(request, 'registration/register.html', context)
 
 def restaurant_map(request):
     data = dict()
@@ -94,3 +106,4 @@ def remove_from_fav(request):
         return fav_list(request)
     else:
         return HttpResponseRedirect(reverse('login'))
+
