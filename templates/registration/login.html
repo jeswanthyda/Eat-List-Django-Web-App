@@ -1,17 +1,24 @@
 {% extends 'base_nologin.html' %}
 {% block content %}
-    <div class="loginmodal-container">
-        {% if form.errors %}
-            <p> Your username and password didn't match. Please try again.</p>
-        {% endif %}
-        <h1>Login to Your Account</h1><br>
-        <form method="post" action="{% url 'login' %}">
+
+    <div class="login-form">
+        <form action="{% url 'doLogin' %}" method="post">
             {% csrf_token %}
-            {{ form.username }}
-            {{ form.password }}
-            <input type="submit" name="login" class="login loginmodal-submit" value="login">
-            <input type="hidden" name="next" value="{{ next }}" />
+            <h2 class="text-center">Log In</h2>   
+            {% if message %}
+            <p style="color:red;"> {{ message }}</p>
+            {% endif %}    
+            <div class="form-group">
+                <input type="text" id="id_username" name="username" class="form-control" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" id="id_password" name="password" class="form-control" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-block" name="Log In"></input>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>    
         </form>
+        <p class="text-center"><a href="#">Create an Account</a></p>
     </div>
-                
 {% endblock %}    

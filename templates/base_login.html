@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin-ext"
           type="text/css">
     <link rel="stylesheet" href="{% static 'ColumbiaApp/css/style.css' %}" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </head>
 <body>
 
@@ -34,9 +35,6 @@
 
 <section class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
     <div class="container">
-        <h1 style="text-align: center;">Search for places to eat : TODO</h1>
-        <p style="text-align: center;" class="lead">Add catchy lines about app : TODO.</p>
-
         {% block content %}
         {% endblock %}
     </div>
@@ -51,10 +49,11 @@
     <!-- /.container -->
   </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% static 'ColumbiaApp/js/map.js' %}"></script>
 <script type="text/javascript" src="{% static 'ColumbiaApp/js/add_to_fav.js' %}"></script>
 <script type="text/javascript" src="{% static 'ColumbiaApp/js/bootstrap-notify.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Columbiaapp/js/tingle.min.js' %}"></script>
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwYc89wJD1xacH4R_wBhi3NVl_Sc4ZlIs&libraries=places"></script>
 </body>

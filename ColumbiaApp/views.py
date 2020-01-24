@@ -4,7 +4,8 @@ from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from ColumbiaApp.models import Restaurant
 from django.http import JsonResponse
-
+from django.contrib.auth import login as Login
+from django.contrib.auth import authenticate
 
 # Create your views here.
 
@@ -32,6 +33,21 @@ def home(request):
             data['form'] = form
             return render(request,"admin_ops.html",context=data)
     return render(request, 'home.html', context=data)
+
+def doLogin(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        Login(request, user)
+        return home(request)
+    else:
+        data = dict()
+        data['message'] = "Invalid username of password. Please try again."
+        return render(request,'registration/login.html',context=data)
+
+def login(request):
+    return render(request,'registration/login.html')
 
 def register(request):
     #TODO
