@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin-ext"
           type="text/css">
     <link rel="stylesheet" href="{% static 'ColumbiaApp/css/style.css' %}" type="text/css">
+
 </head>
 <body>
 
@@ -26,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="#loginModal" rel="modal:open">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'register' %}">Register</a>
@@ -38,8 +39,6 @@
 
 <section class="py-5 bg-image-full" style="background-image: url('https://unsplash.it/1900/1080?image=1081');">
     <div class="container">
-        <h1 style="text-align: center;">Search for places to eat : TODO</h1>
-        <p style="text-align: center;" class="lead">Add catchy lines about app : TODO.</p>
         {% block content %}
         {% endblock %}
     </div>
@@ -54,11 +53,11 @@
     <!-- /.container -->
 </footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="{% static 'ColumbiaApp/js/map.js' %}"></script>
 <script type="text/javascript" src="{% static 'ColumbiaApp/js/add_to_fav.js' %}"></script>
 <script type="text/javascript" src="{% static 'ColumbiaApp/js/bootstrap-notify.min.js' %}"></script>
-<script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwYc89wJD1xacH4R_wBhi3NVl_Sc4ZlIs&libraries=places"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwYc89wJD1xacH4R_wBhi3NVl_Sc4ZlIs&libraries=places"></script>
+
 </body>
 </html>
