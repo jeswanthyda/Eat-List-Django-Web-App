@@ -1,11 +1,65 @@
 {% extends 'base_login.html' %}
 {% block content %}
-    <form action="{% url 'user_profile_edit' %}" method="get">
-        Username : {{ user }} <br>
-        Password : ***** <br>
-        Last Name : {{ last_name }} <br>
-        First Name : {{ first_name }} <br>
-        E-mail : {{ email }} <br>
-        <input type="submit" value="Edit">
-    </form>
+{#    <form action="{% url 'user_profile_update' %}" method="get">#}
+{#        Username : {{ user }} <br>#}
+{#        Password : ***** <br>#}
+{#        Last Name : <input type="text" name="last_name" placeholder="{{ last_name }}"/> <br>#}
+{#        First Name : <input type="text" name="first_name" placeholder="{{ first_name }}"/> <br>#}
+{#        E-mail : <input type="text" name="email" placeholder="{{ email }}"/> <br>#}
+{#        <input type="submit" value="Update">#}
+{#    </form>#}
+
+    <div class="container">
+    <h1>Edit Profile</h1>
+  	<hr>
+	<div class="row">
+      <div class="col-md-9 personal-info">
+        {% if display_flag %}
+          <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a>
+          <i class="fa fa-coffee"></i>
+            Successfully Updated!!
+        </div>
+          {% endif %}
+        <h3>Personal info</h3>
+
+        <form class="form-horizontal" role="form" action="{% url 'user_profile_update' %}" method="get">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="first_name" value="{{ first_name }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="last_name" value="{{ last_name }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="email" value="{{ email }}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Username:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="text" readonly value="{{user}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="submit" class="btn btn-primary" value="Save Changes">
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>
+
 {% endblock %}

@@ -25,17 +25,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" style="padding-right:50px;" href="{% url 'restaurant_map' %}">Map</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="padding-right:50px;" href="{% url 'fav_list' %}">Favorites</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="padding-right:50px;" href="#">Welcome {{ user|title }}</a>
-=======
-                    <a class="nav-link" style="padding-right:50px;" href="{% url 'user_profile' %}">Welcome {{ user|title }}</a>
->>>>>>> jes_branch
+                    <a class="nav-link" style="padding-right:50px;" href="{% url 'user_profile' %}">{{ user|title|safe }}'s Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>

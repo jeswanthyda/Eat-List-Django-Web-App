@@ -12,12 +12,12 @@
             </tr>
         </thead>
 
-        <tbody>
+        <tbody class="text-center">
         {% for ele in fav_restaurants %}
             <tr>
                 <td>{{ele.name}}</td>
                 <td>{{ele.cuisine}}</td>
-                <td align="center"><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
+                <td><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
             </tr>
         {% endfor %}
         </tbody>
