@@ -74,6 +74,9 @@ function initAutocomplete() {
                         content: contentString,
                         maxWidth: 500
                     });
+                    google.maps.event.addListener(map, "click", function(event) {
+                        infowindow.close();
+                    });
                     google.maps.event.addListener(marker, 'click', function() {
                         infowindow.open(map,marker);
                     });
