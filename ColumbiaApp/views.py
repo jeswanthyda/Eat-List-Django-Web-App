@@ -70,10 +70,13 @@ def add_to_fav(request):
         new_fav.cuisine = request.GET['cuisine']
         new_fav.name = request.GET['name']
         new_fav.save()
-        context = {'message':'Successfully Added!'}
+        context = {'message':'The restaurant is added to your favorites!'}
+        context['m_type'] = "success"
         return JsonResponse(context)
     else:
-        context = {'message':'Must be logged in'}
+        context = {'message':'Unfortunately, you are not logged in. Click \
+        <a href=\'/login\'>here</a> to login'}
+        context['m_type'] = "failure"
         return JsonResponse(context)
 
 
