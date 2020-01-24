@@ -1,6 +1,7 @@
 .vscode/*
-<<<<<<< HEAD
 .idea/*
-=======
 config.txt
->>>>>>> sid
+*.pc
+*.pyc
+*.pyo
+__pycache__
