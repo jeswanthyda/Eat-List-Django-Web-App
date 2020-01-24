@@ -150,3 +150,21 @@ def remove_from_fav(request):
     else:
         return HttpResponseRedirect(reverse('login'))
 
+def user_profile(request):
+    cur_user = request.user
+    context = {}
+    context['last_name'] = cur_user.last_name
+    context['first_name'] = cur_user.first_name
+    context['email'] = cur_user.email
+    return render(request,'user_profile.html',context)
+
+def user_profile_edit(request):
+    return render(request,'user_profile_edit.html')
+
+def user_profile_update(request):
+    cur_user = request.user
+    cur_user.last_name = request.GET['last_name']
+    cur_user.first_name = request.GET['first_name']
+    cur_user.email = request.GET['email']
+    cur_user.save()
+    return HttpResponseRedirect(reverse('user_profile'))

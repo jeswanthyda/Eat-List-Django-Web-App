@@ -1,0 +1,11 @@
+{% extends 'base_login.html' %}
+{% block content %}
+    <form action="{% url 'user_profile_edit' %}" method="get">
+        Username : {{ user }} <br>
+        Password : ***** <br>
+        Last Name : {{ last_name }} <br>
+        First Name : {{ first_name }} <br>
+        E-mail : {{ email }} <br>
+        <input type="submit" value="Edit">
+    </form>
+{% endblock %}
