@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ColumbiaApp import views
-from django.contrib.auth.views import LoginView,LogoutView
+from django.contrib.auth.views import LoginView,LogoutView,login_required
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name='home'),
-    path('login',LoginView.as_view(),name='login'),
+    path('login',views.login,name='login'),
+    path('doLogin',views.doLogin,name='doLogin'),
     path('register',views.register,name='register'),
     path('logout',LogoutView.as_view(),name='logout'),
     path('restaurant_map',views.restaurant_map,name='restaurant_map'),
