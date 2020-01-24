@@ -30,4 +30,5 @@ urlpatterns = [
     path('add_to_fav',views.add_to_fav,name='add_to_fav'),
     path('remove_from_fav',views.remove_from_fav,name='remove_from_fav'),
     path('doRegister',views.doRegister,name='doRegister'),
+    path('doAdminRegister',views.doAdminRegister,name='doAdminRegister'),
 ]

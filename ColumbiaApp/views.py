@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth.forms import UserCreationForm
 from ColumbiaApp.models import Restaurant
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -10,7 +9,7 @@ from django.contrib.auth import authenticate
 
 # Create your views here.
 
-def home(request):
+def home(request,adminSubmitted=False,adminSubmitData=None):
     data = dict()
     import datetime
     data['date'] = datetime.date.today()
@@ -23,16 +22,11 @@ def home(request):
     data['base_template'] = base_template
     user = request.user
     if user.is_superuser:
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            new_user = form.save()
-            new_user.save()
-            data['message'] = "Successfully processed. Press register again to add another user. "
-            return render(request,"admin_ops.html", context=data)
+        if adminSubmitted:
+            print(adminSubmitData)
+            return render(request,"admin_ops.html", context=adminSubmitData)
         else:
-            form = UserCreationForm()
-            data['form'] = form
-            return render(request,"admin_ops.html",context=data)
+            return render(request,"admin_ops.html")
     return render(request, 'home.html', context=data)
 
 def doLogin(request):
@@ -51,19 +45,52 @@ def login(request):
     return render(request,'registration/login.html')
 
 def register(request):
-    return render(request, 'registration/register.html')
+    if request.user.is_authenticated:
+        return home(request)
+    else:
+        return render(request, 'registration/register.html')
 
 def doRegister(request):
+    username = request.POST['username']
+    password1 = request.POST['password1']
+    password2 = request.POST['password2']
     context = dict()
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-        temp_user = form.save()
-        User(temp_user)
-        return HttpResponseRedirect(reverse('login'))
-    else:
-        form = UserCreationForm()
-        context['form'] = form
+    try:
+        User.objects.get(username=username)
+        context['message'] = 'A user with that username already exists. Please try again.'
         return render(request, 'registration/register.html', context)
+    except:
+        if password1 == password2:
+            if User.objects.create_user(username,None, password1).is_active:
+                return HttpResponseRedirect(reverse('login'))
+            else:
+                context['message'] = "User could not be created. Please try again."
+                return render(request, 'registration/register.html', context)
+        else:
+            context['message'] = "Passwords do not match. Please try again."
+            return render(request, 'registration/register.html', context)
+
+def doAdminRegister(request):
+    username = request.POST['username']
+    password1 = request.POST['password1']
+    password2 = request.POST['password2']
+    context = dict()
+    try:
+        User.objects.get(username=username)
+        context['message'] = 'A user with that username already exists. Please try again.'
+        context['status'] = 'failure'
+    except:
+        if password1 == password2:
+            if User.objects.create_user(username,None, password1).is_active:
+                context['message'] = 'User was created successfully.'
+                context['status'] = 'success'
+            else:
+                context['message'] = "User could not be created. Please try again."
+                context['status'] = 'failure'
+        else:
+            context['message'] = "Passwords do not match. Please try again."
+            context['status'] = 'failure'
+    return home(request, True, context)
 
 def restaurant_map(request):
     data = dict()

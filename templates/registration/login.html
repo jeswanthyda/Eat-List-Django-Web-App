@@ -1,6 +1,5 @@
 {% extends 'base_nologin.html' %}
 {% block content %}
-
     <div class="login-form">
         <form action="{% url 'doLogin' %}" method="post">
             {% csrf_token %}
@@ -19,6 +18,5 @@
                 <input type="hidden" name="next" value="{{ next }}" />
             </div>    
         </form>
-        <p class="text-center"><a href="#">Create an Account</a></p>
     </div>
 {% endblock %}    
