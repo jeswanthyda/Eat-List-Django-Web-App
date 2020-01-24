@@ -59,11 +59,17 @@ def fav_list(request):
 
 def add_to_fav(request):
     if request.user.is_authenticated:
-        new_fav = Restaurant(user=request.user)
-        new_fav.cuisine = request.GET['cuisine']
-        new_fav.name = request.GET['name']
-        new_fav.save()
-        context = {'message':'Successfully Added!'}
+        cur_user = request.user
+        cur_name = request.GET['name']
+        try:
+            element = Restaurant.objects.get(user=cur_user,name=cur_name)
+            context = {'message':'Restaurant already in Favourites!'}
+        except:
+            new_fav = Restaurant(user=cur_user)
+            new_fav.cuisine = request.GET['cuisine']
+            new_fav.name = cur_name
+            new_fav.save()
+            context = {'message':'Successfully Added!'}
         return render(request,'restaurant_map.html',context)
     else:
         #TODO
