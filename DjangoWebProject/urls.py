@@ -31,4 +31,7 @@ urlpatterns = [
     path('remove_from_fav',views.remove_from_fav,name='remove_from_fav'),
     path('doRegister',views.doRegister,name='doRegister'),
     path('doAdminRegister',views.doAdminRegister,name='doAdminRegister'),
+    path('user_profile',views.user_profile,name='user_profile'),
+    path('user_profile_edit',views.user_profile_edit,name='user_profile_edit'),
+    path('user_profile_update',views.user_profile_update,name='user_profile_update'),
 ]
