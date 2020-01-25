@@ -53,7 +53,7 @@ function initAutocomplete() {
                         return;
                     }
                     
-                    image = getIcon(place.color)
+                    image = getIcon(place.color,place.size)
                     // Create a marker for each place.
                     markers.push(new google.maps.Marker({
                         map: map,
@@ -64,7 +64,7 @@ function initAutocomplete() {
                     "<div class='card-body'>" + 
                       "<h5 class='card-title'>" + place.name + "</h5>" +
                       "<h6 class='card-subtitle mb-2 text-muted'>Rating: " + place.rating + "</h6>" +
-                      "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>" +
+                      "<p class='card-text'>Checkout this " + cuisine + " spot.</p>" +
                       "<button onclick=\"add_to_fav(\'"+place.name.replace(/'/g, "\\'")+"',\'"+cuisine.replace(/'/g, "\\'")+"\')\" class='card-link'>Add to Favorites</button>" +
                       "</div>" + "</div>"
                     
@@ -105,7 +105,13 @@ function rankResults(results) {
     } 
     results= sortByKey(results,"criteria");
     for (i = 0; i < results.length; i++) { 
-        results[i]['color'] = perc2color(i/results.length*100);
+        if (i >= results.length-3){
+            results[i]['color'] = "#055BE6";
+            results[i]['size'] = 3
+        } else {
+            results[i]['color'] = "#ffb3e6";
+            results[i]['size'] = 2
+        }
     } 
     return results
 }
@@ -119,19 +125,19 @@ function sortByKey(array, key) {
 
 function perc2color(perc) {
 	var r, g, b = 0;
-	if(perc < 50) {
-		r = 255;
+	//if(perc < 50) {
+		//r = 255;
 		g = Math.round(5.1 * perc);
-	}
-	else {
-		g = 255;
+	//}
+	//else {
+		//g = 255;
 		r = Math.round(510 - 5.10 * perc);
-	}
+	//}
 	var h = r * 0x10000 + g * 0x100 + b * 0x1;
 	return '#' + ('000000' + h.toString(16)).slice(-6);
 }
 
-function getIcon(color) {
+function getIcon(color,size) {
     var pinColor = color;
     var pinLabel = "A";
 
@@ -149,7 +155,7 @@ function getIcon(color) {
         fillColor: pinColor,
         strokeWeight: 2,
         strokeColor: "white",
-        scale: 2,
+        scale: size,
         labelOrigin: labelOriginFilled
     };
     return markerImage;
