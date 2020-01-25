@@ -2,8 +2,8 @@
 {% block content %}
     <h1 style="text-align: center;">{{user|title}}'s Favorite Restaurants</h1>
     <p style="text-align: center;padding-bottom:30px;" class="lead">Add your favorite restaurants from the <a href="{% url 'restaurant_map' %}">map</a> and check them out here.</p>
-
-    <table style="width:70%" class="table table-hover table-striped" align="center" border="2">
+    <div class="container-fluid" style="width:90%;">
+    <table class="table table-hover table-striped">
         <thead class="thead-dark text-center">
             <tr>
                 <th>Restaurant Name</th>
@@ -17,10 +17,10 @@
             <tr>
                 <td>{{ele.name}}</td>
                 <td>{{ele.cuisine}}</td>
-                <td><a class="btn btn-danger" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
+                <td><a class="btn-sm btn-secondary" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
             </tr>
         {% endfor %}
         </tbody>
-
     </table>
+    </div>
 {% endblock %}
