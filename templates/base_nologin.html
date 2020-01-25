@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Restrommunity</title>
+    <title>Eat-List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap&subset=latin-ext"
@@ -20,6 +20,9 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
+        <a href="{% url 'home' %}">
+        <img class="navbar-brand" src="/static/ColumbiaApp/img/logo.jpg" height="70px" width="80px"></img>
+        </a>
         <a class="navbar-brand" style="font-family: 'Baskerville Old Face';font-size: 40px;font-weight: bolder" href="{% url 'home' %}">Eat-List</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
