@@ -65,7 +65,7 @@ function initAutocomplete() {
                       "<h5 class='card-title'>" + place.name + "</h5>" +
                       "<h6 class='card-subtitle mb-2 text-muted'>Rating: " + place.rating + "</h6>" +
                       "<p class='card-text'>Checkout this " + cuisine + " spot.</p>" +
-                      "<button onclick=\"add_to_fav(\'"+place.name.replace(/'/g, "\\'")+"',\'"+cuisine.replace(/'/g, "\\'")+"\')\" class='card-link'>Add to Favorites</button>" +
+                      "<button onclick=\"add_to_fav(\'"+place.name.replace(/'/g, "\\'")+"',\'"+cuisine.replace(/'/g, "\\'")+"','" +place.place_id.replace(/'/g, "\\'") + "\')\" class='card-link'>Add to Favorites</button>" +
                       "</div>" + "</div>"
                     
                     var marker = markers.slice(-1)[0] 

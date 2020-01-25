@@ -15,7 +15,7 @@
         <tbody class="text-center">
         {% for ele in fav_restaurants %}
             <tr>
-                <td>{{ele.name}}</td>
+                <td><a href="https://www.google.com/maps/place/?q=place_id:{{ele.url}}" target="_blank">{{ele.name}}</a></td>
                 <td>{{ele.cuisine}}</td>
                 <td><a class="btn-sm btn-secondary" href="{% url 'remove_from_fav' %}?res_to_remove={{ ele.name }}">X</a></td>
             </tr>

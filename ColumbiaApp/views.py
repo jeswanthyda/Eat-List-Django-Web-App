@@ -123,6 +123,7 @@ def add_to_fav(request):
     if request.user.is_authenticated:
         cur_user = request.user
         cur_name = request.GET['name']
+        cur_url = request.GET['place_id']
         try:
             element = Restaurant.objects.get(user=cur_user,name=cur_name)
             context = {'message': 'The restaurant is already in your favorites!'}
@@ -132,6 +133,7 @@ def add_to_fav(request):
             new_fav = Restaurant(user=cur_user)
             new_fav.cuisine = request.GET['cuisine'].capitalize() 
             new_fav.name = cur_name
+            new_fav.url = cur_url
             new_fav.save()
             context = {'message':'The restaurant is added to your favorites!'}
             context['m_type'] = "success"
