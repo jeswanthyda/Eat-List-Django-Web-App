@@ -8,3 +8,5 @@ Maps and places APIs, this application highlights the three highest rated restau
 A user is able to create an account and save a list of his favorite restaurants.
 
 In future releases, users will be able to share their favorite restaurants with their friends.
+
+The application is currently deployed on: http://columbia-web-app.herokuapp.com/
